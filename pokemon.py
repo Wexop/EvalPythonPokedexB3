@@ -8,7 +8,7 @@ class Pokemon:
         self.types = types
 
     def getSpriteUrl(self):
-        return self.sprites['front_default']
+        return self.sprites['other']['official-artwork']['front_default']
 
     def getTypesStringTab(self):
         tab = []

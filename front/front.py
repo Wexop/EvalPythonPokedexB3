@@ -3,6 +3,7 @@ from tkinter import *
 
 root = Tk()
 root.geometry("480x750")
+root.resizable(width=False, height=False)
 bg = PhotoImage(file = "./assets/pokecenter.png")
 
 canvas1 = Canvas( root, width = 400,height = 400)

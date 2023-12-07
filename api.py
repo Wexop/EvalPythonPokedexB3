@@ -2,7 +2,7 @@ import requests
 
 from pokemon import Pokemon
 
-ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?limit=2"
+ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
 POKEMON_INFO_URL = "https://pokeapi.co/api/v2/pokemon/:id/"
 POKEMON_TYPE_URL = "https://pokeapi.co/api/v2/type/:id/"
 
@@ -38,6 +38,3 @@ class Api:
         if value != "":
             self.actualPokemonTab = [p for p in self.pokemons.copy() if value in p.name]
         return self.actualPokemonTab
-
-
-api = Api()

@@ -38,3 +38,8 @@ class Api:
         if value != "":
             self.actualPokemonTab = [p for p in self.pokemons.copy() if value in p.name]
         return self.actualPokemonTab
+
+    def getOnePokemon(self, id):
+        for i in self.pokemons:
+            if i.id == id:
+                return i

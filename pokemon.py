@@ -1,4 +1,4 @@
-class Pokemon:
+class PokemonObject:
     def __init__(self, id, name, height, weight, sprites, types):
         self.id = id
         self.name = name

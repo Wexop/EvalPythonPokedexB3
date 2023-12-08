@@ -1,6 +1,6 @@
 import requests
 
-from pokemon import Pokemon
+from pokemon import PokemonObject
 
 ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
 POKEMON_INFO_URL = "https://pokeapi.co/api/v2/pokemon/:id/"
@@ -20,8 +20,8 @@ def getAllPokemonObject():
     tab = []
     for i in res['results']:
         pokemonInfo = requests.get(i['url']).json()
-        pok = Pokemon(pokemonInfo['id'], pokemonInfo['name'], pokemonInfo['height'], pokemonInfo['weight'],
-                      pokemonInfo['sprites'], pokemonInfo['types'])
+        pok = PokemonObject(pokemonInfo['id'], pokemonInfo['name'], pokemonInfo['height'], pokemonInfo['weight'],
+                            pokemonInfo['sprites'], pokemonInfo['types'])
         tab.append(pok)
 
     return tab

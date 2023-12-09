@@ -1,5 +1,6 @@
 # Import module
 from tkinter import *
+from api import Api
 
 root = Tk()
 root.geometry("480x750")
@@ -15,8 +16,20 @@ button1 = Button( root, text = "Index")
 button3 = Button( root, text = "Pokedex")
 button2 = Button( root, text = "Combattre")
 
+entry_pokemon = Entry(root, width=20)
+entry_pokemon.insert(0, "Username")
+entry_pokemon.pack()
+
 button1_canvas = canvas1.create_window( 100, 10,anchor = "nw",window = button1)
 button2_canvas = canvas1.create_window( 100, 40,anchor = "nw",window = button2)
 button3_canvas = canvas1.create_window( 100, 70, anchor = "nw",window = button3)
 
+
+api = Api()
+namePokemon = input("Entrez le nom de votre pokémon: ")
+research = api.search(namePokemon)
+for i in range(len(research)):
+    print(research[i].name)
+
 root.mainloop()
+

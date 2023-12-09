@@ -1,12 +1,20 @@
 from django.db import models
 
 
-class Pokemon:
-    def __init__(self, id, name, height, weight, sprite, type1, type2):
-        self.id = models.IntegerField(id)
-        self.name = models.CharField(name)
-        self.height = models.IntegerField(height)
-        self.weight = models.IntegerField(weight)
-        self.sprite = models.CharField(sprite)
-        self.type1 = models.CharField(type1)
-        self.type2 = models.CharField(type2)
+class Pokemon(models.Model):
+    pokemonId = models.IntegerField(default=0)
+    name = models.CharField(max_length=255, null=True)
+    height = models.IntegerField(default=0)
+    weight = models.IntegerField(default=0)
+    sprite = models.CharField(max_length=255, null=True)
+    type1 = models.CharField(max_length=255, null=True)
+    type2 = models.CharField(max_length=255, null=True)
+
+    def create(self, id, name, height, weight, sprite, type1, type2):
+        self.pokemonId = id
+        self.name = name
+        self.height = height
+        self.weight = weight
+        self.sprite = sprite
+        self.type1 = type1
+        self.type2 = type2

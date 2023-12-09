@@ -1,3 +1,6 @@
+from pokedex.models import Pokemon
+
+
 class PokemonObject:
     def __init__(self, id, name, height, weight, sprites, types):
         self.id = id
@@ -16,3 +19,12 @@ class PokemonObject:
             tab.append(i['type']['name'])
 
         return tab
+
+    def toPokemonModel(self):
+        type2 = "aucun"
+        if (len(self.getTypesStringTab()) == 2):
+            type2 = self.getTypesStringTab()[1]
+        pokemon = Pokemon()
+        pokemon.create(self.id, self.name, self.height, self.weight, self.getSpriteUrl(),
+                       self.getTypesStringTab()[0], type2)
+        return pokemon

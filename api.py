@@ -30,8 +30,15 @@ def getAllPokemonObject():
 class Api:
 
     def __init__(self):
+        self.actualPokemonTab = None
+        self.pokemons = None
+
+    def updateBDD(self):
         self.pokemons = getAllPokemonObject()
         self.actualPokemonTab = self.pokemons.copy()
+
+        for pok in self.pokemons:
+            pok.toPokemonModel().save()
 
     def search(self, value: str):
         self.actualPokemonTab = self.pokemons.copy()

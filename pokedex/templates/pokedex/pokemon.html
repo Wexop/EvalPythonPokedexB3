@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ string | upper}}</title>
+    <title>{{ string | upper }}</title>
 </head>
 <body>
 <main>
-    <h2>Vous pouvez consulter le pokémon {{string}} (Id:{{number}})</h2>
+    <h2>Vous pouvez consulter le pokémon {{ pokemon.name }} (Id:{{ pokemon.pokemonId }})</h2>
+    <img src="{{ pokemon.sprite }}" alt="">
 </main>
 </body>
 </html>

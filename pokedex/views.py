@@ -1,7 +1,9 @@
 from django.http import *
 from django.shortcuts import render, redirect
+from django.template import loader
 
 from api import Api
+from pokedex.models import Pokemon
 
 
 # Create your views here.
@@ -20,10 +22,15 @@ def combat(request):
     return HttpResponse("<h2>Créer votre deck pour un combat Pokémon</h2>")
 
 
-def pokemon(request, string, number):
-    context = {'string': f'{string}', 'number': f'{number}'}
+def pokemon(request, id):
+    context = {'pokemon': Pokemon.objects.get(pokemonId=id)}
     return render(request, 'pokedex/pokemon.html', context)
 
 
 def pokedex(request):
-    return redirect(pokemon, "bulbizarre", 1)
+    pokemons = Pokemon.objects.all().values()
+    template = loader.get_template('pokedex/list_pokemon.html')
+    context = {
+        'pokemons': pokemons,
+    }
+    return HttpResponse(template.render(context, request))

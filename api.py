@@ -42,14 +42,3 @@ class Api:
             pokBDD = Pokemon.objects.get(pokemonId=pok.id)
             if not pokBDD:
                 pok.toPokemonModel().save()
-
-    def search(self, value: str):
-        self.actualPokemonTab = self.pokemons.copy()
-        if value != "":
-            self.actualPokemonTab = [p for p in self.pokemons.copy() if value in p.name]
-        return self.actualPokemonTab
-
-    def getOnePokemon(self, id):
-        for i in self.pokemons:
-            if i.id == id:
-                return i

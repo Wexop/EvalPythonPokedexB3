@@ -22,7 +22,7 @@ class PokemonObject:
 
     def toPokemonModel(self):
         type2 = "aucun"
-        if (len(self.getTypesStringTab()) == 2):
+        if len(self.getTypesStringTab()) == 2:
             type2 = self.getTypesStringTab()[1]
         pokemon = Pokemon()
         pokemon.create(self.id, self.name, self.height, self.weight, self.getSpriteUrl(),

@@ -1,5 +1,6 @@
 import requests
 
+from pokedex.models import Pokemon
 from pokemon import PokemonObject
 
 ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
@@ -38,7 +39,9 @@ class Api:
         self.actualPokemonTab = self.pokemons.copy()
 
         for pok in self.pokemons:
-            pok.toPokemonModel().save()
+            pokBDD = Pokemon.objects.get(pokemonId=pok.id)
+            if not pokBDD:
+                pok.toPokemonModel().save()
 
     def search(self, value: str):
         self.actualPokemonTab = self.pokemons.copy()

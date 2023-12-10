@@ -1,25 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{{ string | upper }}</title>
+     <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>{{ pokemon.name | upper }}</title>
 </head>
-<body>
-<main>
-    <a href="/pokemon/{{ idInf }}"><</a>
-    <h2>{{ pokemon.name }}</h2>
-    <a href="/pokemon/{{ idSupp }}">></a>
-    <p></p>
-    <img src="{{ pokemon.sprite }}" alt="">
-    <p>Poids : {{ pokemon.weight }} / Taille : {{ pokemon.height }}</p>
-    <p>Type(s): {{ pokemon.type1 }} {{ pokemon.type2 }}</p>
-    <h1>Stats :</h1>
-    <p>HP : {{ pokemon.hp }}</p>
-    <p>Attaque : {{ pokemon.attack }}</p>
-    <p>Défense : {{ pokemon.defense }}</p>
-    <p>Attaque spéciale : {{ pokemon.special_attack }}</p>
-    <p>Défense spéciale : {{ pokemon.special_defense }}</p>
-    <p>Vitesse : {{ pokemon.speed }}</p>
+<body style="background-color:#363832">
+<main style="text-align: center; margin: 1em 0; color: wheat">
+    <div class="navbar" style="margin: 0 1rem">
+        <a href="/pokemon/{{ idInf }}" type="button" class="btn" style="background-color: wheat; color:#363832; border-color: wheat;"><</a>
+        <h2>{{ pokemon.name | upper }}</h2>
+        <a href="/pokemon/{{ idSupp }}" type="button" class="btn" style="background-color: wheat; color:#363832; border-color: wheat">></a>
+    </div>
+    <div class="container mt-5">
+        <div class="row align-items-center justify-content-around">
+        <img src="{{ pokemon.sprite }}" alt="{{ pokemon.name }}-img" class="col-lg-4 col-md-4 col-sm-4 mb-8">
+        <div class="col-lg-4 col-md-4 col-sm-4 mb-8">
+            <h1 style="margin-bottom:2rem ">Stats :</h1>
+            <div class="text-left">
+                <p>Poids : {{ pokemon.weight }}Kg / Taille : {{ pokemon.height }}m</p>
+                <p class="text-capitalize">Types : {{ pokemon.type1 }} {{ pokemon.type2 }}</p>
+                <p>HP : {{ pokemon.hp }}</p>
+                <p>Attaque : {{ pokemon.attack }}</p>
+                <p>Défense : {{ pokemon.defense }}</p>
+                <p>Attaque spéciale : {{ pokemon.special_attack }}</p>
+                <p>Défense spéciale : {{ pokemon.special_defense }}</p>
+                <p>Vitesse : {{ pokemon.speed }}</p>
+            </div>
+        </div>
+    </div>
+    </div>
 </main>
 </body>
 </html>

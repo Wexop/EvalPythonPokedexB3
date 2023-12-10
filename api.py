@@ -22,7 +22,7 @@ def getAllPokemonObject():
     for i in res['results']:
         pokemonInfo = requests.get(i['url']).json()
         pok = PokemonObject(pokemonInfo['id'], pokemonInfo['name'], pokemonInfo['height'], pokemonInfo['weight'],
-                            pokemonInfo['sprites'], pokemonInfo['types'])
+                            pokemonInfo['sprites'], pokemonInfo['types'], pokemonInfo['stats'])
         tab.append(pok)
 
     return tab

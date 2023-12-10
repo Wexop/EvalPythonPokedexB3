@@ -6,8 +6,17 @@
 </head>
 <body>
 <main>
-    <h2>Vous pouvez consulter le pokémon {{ pokemon.name }} (Id:{{ pokemon.pokemonId }})</h2>
+    <h2>{{ pokemon.name }}</h2>
     <img src="{{ pokemon.sprite }}" alt="">
+    <p>Poids : {{ pokemon.weight }} / Taille : {{ pokemon.height }}</p>
+    <p>Type(s): {{ pokemon.type1 }} {{ pokemon.type2 }}</p>
+    <h1>Stats :</h1>
+    <p>HP : {{ pokemon.hp }}</p>
+    <p>Attaque : {{ pokemon.attack }}</p>
+    <p>Défense : {{ pokemon.defense }}</p>
+    <p>Attaque spéciale : {{ pokemon.special_attack }}</p>
+    <p>Défense spéciale : {{ pokemon.special_defense }}</p>
+    <p>Vitesse : {{ pokemon.speed }}</p>
 </main>
 </body>
 </html>

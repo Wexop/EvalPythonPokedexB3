@@ -32,7 +32,13 @@ def pokemon(request, id):
         idSupp = 1
     if (idInf == 0):
         idInf = 151
-    context = {'pokemon': Pokemon.objects.get(pokemonId=id), 'idSupp': idSupp, 'idInf': idInf}
+    pok = Pokemon.objects.get(pokemonId=id)
+    context = {'pokemon': pok,
+               'idSupp': idSupp,
+               'idInf': idInf,
+               "colorType1": pok.getTypeColor(pok.type1),
+               "colorType2": pok.getTypeColor(pok.type2)
+               }
     return render(request, 'pokedex/pokemon.html', context)
 
 

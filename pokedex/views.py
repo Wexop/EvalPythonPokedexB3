@@ -23,7 +23,13 @@ def combat(request):
 
 
 def pokemon(request, id):
-    context = {'pokemon': Pokemon.objects.get(pokemonId=id)}
+    idSupp = id+1
+    idInf = id-1
+    if (idSupp == 152):
+        idSupp = 1
+    if (idInf == 0):
+        idInf = 151
+    context = {'pokemon': Pokemon.objects.get(pokemonId=id), 'idSupp':idSupp, 'idInf':idInf}
     return render(request, 'pokedex/pokemon.html', context)
 
 

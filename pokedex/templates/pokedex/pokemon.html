@@ -6,7 +6,10 @@
 </head>
 <body>
 <main>
+    <a href="/pokemon/{{ idInf }}"><</a>
     <h2>{{ pokemon.name }}</h2>
+    <a href="/pokemon/{{ idSupp }}">></a>
+    <p></p>
     <img src="{{ pokemon.sprite }}" alt="">
     <p>Poids : {{ pokemon.weight }} / Taille : {{ pokemon.height }}</p>
     <p>Type(s): {{ pokemon.type1 }} {{ pokemon.type2 }}</p>

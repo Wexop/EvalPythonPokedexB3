@@ -5,18 +5,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Pokédex</title>
 </head>
-<body>
+<body style="background-color:#363832">
 <main>
-    <h1>Pokédex by Wexop, Hirumacell et Viko</h1>
-    <ul>
-        {% for choice in list_choice %}
-        <li>
-            <a href="{{ choice | lower }}">{{ choice }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div style="text-align: center; margin: 1em 0; color: wheat">
+            <h1>Pokédex by Wexop, Hirumacell et Viko</h1>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; margin: 2em 0;">
+            <img style="width: 75%" src="https://animesher.com/orig/1/197/1971/19715/animesher.com_japan-heal-pokemon-1971532.gif"
+                 alt="IndexGIF">
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; margin: 2em 0;">
+            <ul>
+                {% for choice in list_choice %}
+                    <a style="margin: 0 1em" type="button" class="btn btn-light" href="{{ choice | lower }}">{{ choice }}</a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </main>
 </body>
 </html>

@@ -9,13 +9,19 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Pokédex</title>
 </head>
-<body>
+<body style="background-color:#363832">
 <main>
-    <h1>Pokemons</h1>
-    <form action="{% url 'searchList' %}">
-        <input type="text" name="name" placeholder="Rechercher">
-        <button type="submit">Search</button>
-    </form>
+    <div style="text-align: center; margin: 1em 0; color: wheat">
+        <h1>Pokemons</h1>
+    </div>
+    <div>
+        <form action="{% url 'searchList' %}">
+            <div class="form-group container">
+                <input style="margin: 1rem" type="text" class="form-control" name="name" placeholder="Rechercher">
+                <button class="btn btn-danger" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
     <div class="container mt-5">
         <div class="row">
             {% for pokemon in pokemons %}
@@ -28,7 +34,8 @@
                             <p class="card-text">Poids: {{ pokemon.weight }} Kg / Taille: {{ pokemon.height }} Cm</p>
                         </div>
                         <div class="card-footer">
-                            <a href="/pokemon/{{ pokemon.pokemonId }}" type="button" class="btn btn-outline-danger">En savoir plus</a>
+                            <a href="/pokemon/{{ pokemon.pokemonId }}" type="button" class="btn btn-outline-danger">En
+                                savoir plus</a>
                         </div>
                     </div>
                 </div>

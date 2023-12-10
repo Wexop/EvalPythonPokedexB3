@@ -37,8 +37,7 @@ class Api:
     def updateBDD(self):
         self.pokemons = getAllPokemonObject()
         self.actualPokemonTab = self.pokemons.copy()
+        Pokemon.objects.all().delete()  # delete all to save it after
 
         for pok in self.pokemons:
-            pokBDD = Pokemon.objects.get(pokemonId=pok.id)
-            if not pokBDD:
-                pok.toPokemonModel().save()
+            pok.toPokemonModel().save()

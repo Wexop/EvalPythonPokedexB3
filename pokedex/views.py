@@ -34,3 +34,14 @@ def pokedex(request):
         'pokemons': pokemons,
     }
     return HttpResponse(template.render(context, request))
+
+
+def searchPokemonList(request):
+    name = request.GET.get("name")
+    pokemons = Pokemon.objects.filter(name__contains=name)
+    template = loader.get_template("pokedex/list_pokemon.html")
+    context = {
+        'pokemons': pokemons
+    }
+
+    return HttpResponse(template.render(context, request))

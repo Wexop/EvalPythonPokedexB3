@@ -12,6 +12,10 @@
 <body>
 <main>
     <h1>Pokemons</h1>
+    <form action="{% url 'searchList' %}">
+        <input type="text" name="name" placeholder="Rechercher">
+        <button type="submit">Search</button>
+    </form>
     <div class="container mt-5">
         <div class="row">
             {% for pokemon in pokemons %}

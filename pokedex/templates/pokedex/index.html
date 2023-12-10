@@ -16,16 +16,24 @@
             <h1>Pokédex by Wexop, Hirumacell et Viko</h1>
         </div>
         <div style="display: flex; justify-content: center; align-items: center; margin: 2em 0;">
-            <img style="width: 75%" src="https://animesher.com/orig/1/197/1971/19715/animesher.com_japan-heal-pokemon-1971532.gif"
+            <img style="width: 75%"
+                 src="https://animesher.com/orig/1/197/1971/19715/animesher.com_japan-heal-pokemon-1971532.gif"
                  alt="IndexGIF">
         </div>
-        <div style="display: flex; justify-content: center; align-items: center; margin: 2em 0;">
-            <ul>
-                {% for choice in list_choice %}
-                    <a style="margin: 0 1em" type="button" class="btn btn-light" href="{{ choice | lower }}">{{ choice }}</a>
-                {% endfor %}
-            </ul>
-        </div>
+        {% if updating %}
+            <h2>Chargement des pokémons....</h2>
+            <script>fetch("/update/").then(() => location.reload())</script>
+        {% else %}
+            <div style="display: flex; justify-content: center; align-items: center; margin: 2em 0;">
+                <ul>
+                    {% for choice in list_choice %}
+                        <a style="margin: 0 1em" type="button" class="btn btn-light"
+                           href="{{ choice | lower }}">{{ choice }}</a>
+                    {% endfor %}
+                </ul>
+            </div>
+            </div>
+        {% endif %}
     </div>
 </main>
 </body>

@@ -5,10 +5,13 @@ from django.template import loader
 from api import Api
 from pokedex.models import Pokemon
 
+api = Api()
+
 
 # Create your views here.
 def index(request):
-    context = {'list_choice': ['Pokedex', 'Combat', "Update"]}
+    pokemons = Pokemon.objects.all()
+    context = {'list_choice': ['Pokedex', 'Combat', "Update"], "updating": len(pokemons) == 0}
     return render(request, 'pokedex/index.html', context)
 
 
@@ -23,13 +26,13 @@ def combat(request):
 
 
 def pokemon(request, id):
-    idSupp = id+1
-    idInf = id-1
+    idSupp = id + 1
+    idInf = id - 1
     if (idSupp == 152):
         idSupp = 1
     if (idInf == 0):
         idInf = 151
-    context = {'pokemon': Pokemon.objects.get(pokemonId=id), 'idSupp':idSupp, 'idInf':idInf}
+    context = {'pokemon': Pokemon.objects.get(pokemonId=id), 'idSupp': idSupp, 'idInf': idInf}
     return render(request, 'pokedex/pokemon.html', context)
 
 

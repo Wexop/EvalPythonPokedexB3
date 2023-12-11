@@ -31,11 +31,11 @@
                     <div style="display: flex; flex-direction: row; align-items: center">
                         <p style="margin-right: 20px" class="text-capitalize">Types : </p>
                         <div style="margin-right: 20px;border-radius: 15px; padding: 8px; background-color: {{ colorType1 }}; align-items: center">
-                            <p style="color: white; text-align: center; margin: 0px">{{ pokemon.type1 }}</p>
+                            <p style="color: white; text-align: center; margin: 0px">{{ pokemon.type1 | upper }}</p>
                         </div>
                         {% if colorType2 %}
                             <div style="border-radius: 15px; padding: 8px; background-color: {{ colorType2 }}; align-items: center">
-                                <p style="color: white; margin: 0px">{{ pokemon.type2 }}</p>
+                                <p style="color: white; margin: 0px">{{ pokemon.type2 | upper }}</p>
                             </div>
                         {% endif %}
                     </div>

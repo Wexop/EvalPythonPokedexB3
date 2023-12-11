@@ -37,7 +37,7 @@ class Pokemon(models.Model):
         elif type == "flying":
             return "#BABABAFF"
         elif type == "water":
-            return "#be4f00"
+            return "#0000FF"
         elif type == "bug":
             return "#00C722FF"
         elif type == "poison":

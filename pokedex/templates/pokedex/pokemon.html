@@ -13,8 +13,13 @@
 </head>
 <body style="background-color:#363832">
 <main style="text-align: center; margin: 1em 0; color: wheat">
+
     <div class="justify-content-center" style="margin: 0 1rem">
-        <h2>{{ pokemon.name | upper }}</h2>
+        <h1>{{ pokemon.name | capfirst }}</h1>
+    </div>
+    <div class="container text-left">
+        <a href="/pokedex" type="button" class="btn"
+           style="background-color: wheat; color:#363832; border-color: wheat">Retour au pokedex</a>
     </div>
     <div class="container mt-5">
         <div class="row align-items-center justify-content-around">
@@ -45,10 +50,14 @@
         </div>
     </div>
     <footer class="navbar">
-        <a href="/pokemon/{{ idInf }}" type="button" class="btn"
-           style="background-color: wheat; color:#363832; border-color: wheat"><i class="fa fa-chevron-left"></i></a>
-        <a href="/pokemon/{{ idSupp }}" type="button" class="btn"
-           style="background-color: wheat; color:#363832; border-color: wheat"><i class="fa fa-chevron-right"></i></a>
+        <div class="container">
+            <a href="/pokemon/{{ idInf }}" type="button" class="btn"
+               style="background-color: wheat; color:#363832; border-color: wheat"><i
+                    class="fa fa-chevron-left"></i></a>
+            <a href="/pokemon/{{ idSupp }}" type="button" class="btn"
+               style="background-color: wheat; color:#363832; border-color: wheat"><i
+                    class="fa fa-chevron-right"></i></a>
+        </div>
     </footer>
 </main>
 </body>

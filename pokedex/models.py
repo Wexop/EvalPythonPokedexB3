@@ -16,7 +16,8 @@ class Pokemon(models.Model):
     special_defense = models.IntegerField(default=0)
     speed = models.IntegerField(default=0)
 
-    def create(self, id, name, height, weight, sprite, type1, type2, hp, attack, defense, special_attack, special_defense, speed):
+    def create(self, id, name, height, weight, sprite, type1, type2, hp, attack, defense, special_attack,
+               special_defense, speed):
         self.pokemonId = id
         self.name = name
         self.height = height / 10
@@ -67,3 +68,11 @@ class Pokemon(models.Model):
         elif type == "dragon":
             return "#004FE8FF"
 
+
+class Pokemon_team(models.Model):
+    pokemon1 = models.IntegerField(default=0)
+    pokemon2 = models.IntegerField(default=0)
+    pokemon3 = models.IntegerField(default=0)
+    pokemon4 = models.IntegerField(default=0)
+    pokemon5 = models.IntegerField(default=0)
+    pokemon6 = models.IntegerField(default=0)

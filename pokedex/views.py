@@ -28,6 +28,7 @@ def fightHome(request):
 
     for team in teams:
         pokemonTeams[team.id] = {
+            "id": team.id,
             "pokemon1": Pokemon.objects.get(pokemonId=team.pokemon1),
             "pokemon2": Pokemon.objects.get(pokemonId=team.pokemon2),
             "pokemon3": Pokemon.objects.get(pokemonId=team.pokemon3),

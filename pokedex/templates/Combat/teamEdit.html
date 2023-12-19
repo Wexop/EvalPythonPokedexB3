@@ -11,10 +11,15 @@
     <title>{{ pokemon.name | upper }}</title>
 
     <style>
-    #teamTable > tr > td {
-        background-color: bisque;
-    }
-</style>
+        #teamTable > tr > td {
+            background-color: bisque;
+        }
+
+        .selected {
+            background-color: bisque;
+            border-radius: 20px;
+        }
+    </style>
 
 </head>
 <body style="background-color:#363832">
@@ -29,63 +34,76 @@
     <div class="d-flex w-100 justify-content-center">
         <table id="teamTable" class="w-25">
             <tr>
-                <td>
-                    {% if team.pokemon1 %}
-                        <img width="40" src="{{ team.pokemon1.sprite }}">
-                        <p>{{ team.pokemon1.name }}</p>
-                    {% else %}
-                        <p>AUCUN</p>
-                    {% endif %}
+                <td class="{% if selected == "1" %} selected {% endif %}">
+                    <a href="/editTeam?id={{ id }}&selected=1&name={{ name }}">
+                        {% if team.pokemon1 %}
+                            <img width="40" src="{{ team.pokemon1.sprite }}">
+                            <p>{{ team.pokemon1.name }}</p>
+                        {% else %}
+                            <p>AUCUN</p>
+                        {% endif %}
+                    </a>
                 </td>
-                <td>
-                    {% if team.pokemon2 %}
-                        <img width="40" src="{{ team.pokemon2.sprite }}">
-                        <p>{{ team.pokemon2.name }}</p>
-                    {% else %}
-                        <p>AUCUN</p>
-                    {% endif %}
+                <td class="{% if selected == "2" %} selected {% endif %}">
+                    <a href="/editTeam?id={{ id }}&selected=2&name={{ name }}">
+                        {% if team.pokemon2 %}
+                            <img width="40" src="{{ team.pokemon2.sprite }}">
+                            <p>{{ team.pokemon2.name }}</p>
+                        {% else %}
+                            <p>AUCUN</p>
+                        {% endif %}
+                    </a>
                 </td>
-                <td>
-                    {% if team.pokemon3 %}
-                        <img width="40" src="{{ team.pokemon3.sprite }}">
-                        <p>{{ team.pokemon3.name }}</p>
-                    {% else %}
-                        <p>AUCUN</p>
-                    {% endif %}
+                <td class="{% if selected == "3" %} selected {% endif %}">
+                    <a href="/editTeam?id={{ id }}&selected=3&name={{ name }}">
+                        {% if team.pokemon3 %}
+                            <img width="40" src="{{ team.pokemon3.sprite }}">
+                            <p>{{ team.pokemon3.name }}</p>
+                        {% else %}
+                            <p>AUCUN</p>
+                        {% endif %}
+                    </a>
                 </td>
             </tr>
             <tr>
-                <td>
-                    {% if team.pokemon4 %}
-                        <img width="40" src="{{ team.pokemon4.sprite }}">
-                        <p>{{ team.pokemon4.name }}</p>
-                    {% else %}
-                        <p>AUCUN</p>
-                    {% endif %}
+                <td class="{% if selected == "4" %} selected {% endif %}">
+                    <a href="/editTeam?id={{ id }}&selected=4&name={{ name }}">
+                        {% if team.pokemon4 %}
+                            <img width="40" src="{{ team.pokemon4.sprite }}">
+                            <p>{{ team.pokemon4.name }}</p>
+                        {% else %}
+                            <p>AUCUN</p>
+                        {% endif %}
+                    </a>
                 </td>
-                <td>
-                    {% if team.pokemon5 %}
-                        <img width="40" src="{{ team.pokemon5.sprite }}">
-                        <p>{{ team.pokemon5.name }}</p>
-                    {% else %}
-                        <p>AUCUN</p>
-                    {% endif %}
+                <td class="{% if selected == "5" %} selected {% endif %}">
+                    <a href="/editTeam?id={{ id }}&selected=5&name={{ name }}">
+                        {% if team.pokemon5 %}
+                            <img width="40" src="{{ team.pokemon5.sprite }}">
+                            <p>{{ team.pokemon5.name }}</p>
+                        {% else %}
+                            <p>AUCUN</p>
+                        {% endif %}
+                    </a>
                 </td>
-                <td>
-                    {% if team.pokemon6 %}
-                        <img width="40" src="{{ team.pokemon6.sprite }}">
-                        <p>{{ team.pokemon6.name }}</p>
-                    {% else %}
-                        <p>AUCUN</p>
-                    {% endif %}
+                <td class="{% if selected == "6" %} selected {% endif %}">
+                    <a href="/editTeam?id={{ id }}&selected=6&name={{ name }}">
+                        {% if team.pokemon6 %}
+                            <img width="40" src="{{ team.pokemon6.sprite }}">
+                            <p>{{ team.pokemon6.name }}</p>
+                        {% else %}
+                            <p>AUCUN</p>
+                        {% endif %}
+                    </a>
                 </td>
             </tr>
         </table>
     </div>
 
     <form action="{% url "editTeam" %}" method="get">
-        <input id="searchInput" type="text" name="name">
+        <input id="searchInput" type="text" name="name" value="{{ name }}">
         <input id="id" hidden type="text" name="id" value="{{ id }}">
+        <input id="selected" hidden type="text" name="selected" value="{{ selected }}">
         <input type="submit" value="Search">
     </form>
     <div class="container mt-5">
@@ -94,7 +112,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pokemonCard">
                     <img width="40" src="{{ pokemon.sprite }}">
                     <p class="pokemon">{{ pokemon.name }}</p>
-                    <a href="/editTeam/?id={{ id }}" type="button" class="btn"
+                    <a href="/editTeam/?id={{ id }}&selected={{ selected }}" type="button" class="btn"
                        style="background-color: wheat; color:#363832; border-color: wheat">Choisir</a>
                 </div>
             {% endfor %}

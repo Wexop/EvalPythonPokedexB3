@@ -14,7 +14,34 @@
 <body style="background-color:#363832">
 <main style="text-align: center; margin: 1em 0; color: wheat">
 
-        <h1>Choisir team</h1>
+    <h1>Choisir team</h1>
+
+    <a href="/editTeam">Ajouter une team</a>
+
+    <div class="d-flex row w-75 pl-5 flex-nowrap" style="gap: 20px">
+
+        {% for team in teams.values %}
+
+            <div style="background-color: bisque; padding: 20px; border-radius: 20px;">
+                <div style="display: flex; flex-direction: row">
+                    {% for pokemon in team.values %}
+                        <div class="m-1">
+                            <img width="50px" src="{{ pokemon.sprite }}">
+                            <p style="color: white">{{ pokemon.name }}</p>
+                        </div>
+
+                    {% endfor %}
+                </div>
+
+                <div class="d-flex row justify-content-center">
+                    <a href="#">Choisir</a>
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
 
 </main>
 </body>

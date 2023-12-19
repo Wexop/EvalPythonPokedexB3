@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 
 from api import Api
-from pokedex.models import Pokemon
+from pokedex.models import Pokemon, Pokemon_team, Combat
 
 api = Api()
 
@@ -22,14 +22,32 @@ def updateBDD(request):
 
 
 def fightHome(request):
-    return render(request, "Combat/teamChoice.html")
+    teams = Pokemon_team.objects.all()
+
+    pokemonTeams = {}
+
+    for team in teams:
+        pokemonTeams[team.id] = {
+            "pokemon1": Pokemon.objects.get(pokemonId=team.pokemon1),
+            "pokemon2": Pokemon.objects.get(pokemonId=team.pokemon2),
+            "pokemon3": Pokemon.objects.get(pokemonId=team.pokemon3),
+            "pokemon4": Pokemon.objects.get(pokemonId=team.pokemon4),
+            "pokemon5": Pokemon.objects.get(pokemonId=team.pokemon5),
+            "pokemon6": Pokemon.objects.get(pokemonId=team.pokemon6),
+        }
+
+    context = {
+        "teams": pokemonTeams
+    }
+    return render(request, "Combat/teamChoice.html", context)
+
 
 def fight(request):
     return render(request, "Combat/fight.html")
 
+
 def editTeam(request):
     return render(request, "Combat/teamEdit.html")
-
 
 
 def pokemon(request, id):

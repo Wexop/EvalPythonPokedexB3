@@ -76,3 +76,19 @@ class Pokemon_team(models.Model):
     pokemon4 = models.IntegerField(default=0)
     pokemon5 = models.IntegerField(default=0)
     pokemon6 = models.IntegerField(default=0)
+
+class Combat(models.Model):
+    pokemonHp1 = models.IntegerField(default=0)
+    pokemonHp2 = models.IntegerField(default=0)
+    pokemonHp3 = models.IntegerField(default=0)
+    pokemonHp4 = models.IntegerField(default=0)
+    pokemonHp5 = models.IntegerField(default=0)
+    pokemonHp6 = models.IntegerField(default=0)
+
+    pokemonIAHp1 = models.IntegerField(default=0)
+    pokemonIAHp2 = models.IntegerField(default=0)
+    pokemonIAHp3 = models.IntegerField(default=0)
+    pokemonIAHp4 = models.IntegerField(default=0)
+    pokemonIAHp5 = models.IntegerField(default=0)
+    pokemonIAHp6 = models.IntegerField(default=0)
+

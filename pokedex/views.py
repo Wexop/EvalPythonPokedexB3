@@ -21,8 +21,15 @@ def updateBDD(request):
     return redirect("/")
 
 
-def combat(request):
-    return HttpResponse("<h2>Créer votre deck pour un combat Pokémon</h2>")
+def fightHome(request):
+    return render(request, "Combat/teamChoice.html")
+
+def fight(request):
+    return render(request, "Combat/fight.html")
+
+def editTeam(request):
+    return render(request, "Combat/teamEdit.html")
+
 
 
 def pokemon(request, id):

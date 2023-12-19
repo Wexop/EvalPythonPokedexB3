@@ -67,3 +67,6 @@ def searchPokemonList(request):
     }
 
     return HttpResponse(template.render(context, request))
+
+def fight(request, id):
+    team = Pokemon_Tea

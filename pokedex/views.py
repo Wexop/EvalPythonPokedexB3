@@ -11,7 +11,7 @@ api = Api()
 # Create your views here.
 def index(request):
     pokemons = Pokemon.objects.all()
-    context = {'list_choice': ['Pokedex', 'Combat', "Update"], "updating": len(pokemons) == 0}
+    context = {'list_choice': ['Pokedex', 'FightHome', "Update"], "updating": len(pokemons) == 0}
     return render(request, 'pokedex/index.html', context)
 
 

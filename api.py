@@ -1,6 +1,6 @@
 import requests
 
-from pokedex.models import Pokemon
+from pokedex.models import Pokemon, Combat, Pokemon_team
 from pokemon import PokemonObject
 
 ALL_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon?limit=151"
@@ -33,6 +33,7 @@ class Api:
     def __init__(self):
         self.actualPokemonTab = None
         self.pokemons = None
+        self.fight = None
 
     def updateBDD(self):
         self.pokemons = getAllPokemonObject()

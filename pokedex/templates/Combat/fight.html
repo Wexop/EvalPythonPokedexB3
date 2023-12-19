@@ -14,8 +14,33 @@
 <body style="background-color:#363832">
 <main style="text-align: center; margin: 1em 0; color: wheat">
 
-        <h1>Fight</h1>
-
+        <h1>Fight avec l'équipe {{ id_team }}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            {% for pokemon in listpokemons.values %}
+                <img src="{{ pokemon.pokemon.sprite }}" alt="{{ pokemon.pokemon.name }}" width=60px height=auto>
+                <p>{{ pokemon.pokemon.name | capfirst }}</p>
+                <p>{{ pokemon.hp }}</p>
+            {% endfor %}
+        </div>
+        <div class="col-6">
+            <img src="{{ listpokemonsIA.pokemonIA1.pokemon.sprite }}" alt="">
+            <p>{{ listpokemonsIA.pokemonIA1.pokemon.name }}</p>
+            <img src="{{ listpokemons.pokemon1.pokemon.sprite }}"></img>
+            <p>{{ listpokemons.pokemon1.pokemon.name }}</p>
+            <a href="">Attaque</a>
+            <a href="">Attaque spéciale</a>
+        </div>
+        <div class="col-2">
+            {% for pokemonIA in listpokemonsIA.values %}
+                <img src="{{ pokemonIA.pokemon.sprite }}" alt="{{ pokemonIA.pokemon.name }}" width=60px height=auto>
+                <p>{{ pokemonIA.pokemon.name | capfirst }}</p>
+                <p>{{ pokemonIA.hp }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 </main>
 </body>
 </html>

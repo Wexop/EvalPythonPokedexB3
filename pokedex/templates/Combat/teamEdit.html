@@ -10,11 +10,96 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>{{ pokemon.name | upper }}</title>
 
+    <style>
+    #teamTable > tr > td {
+        background-color: bisque;
+    }
+</style>
+
 </head>
 <body style="background-color:#363832">
 <main style="text-align: center; margin: 1em 0; color: wheat">
 
-        <h1>Edit</h1>
+    <h1>Edit</h1>
+    <div class="container text-left">
+        <a href="/fightHome/" type="button" class="btn"
+           style="background-color: wheat; color:#363832; border-color: wheat">Retour</a>
+    </div>
+
+    <div class="d-flex w-100 justify-content-center">
+        <table id="teamTable" class="w-25">
+            <tr>
+                <td>
+                    {% if team.pokemon1 %}
+                        <img width="40" src="{{ team.pokemon1.sprite }}">
+                        <p>{{ team.pokemon1.name }}</p>
+                    {% else %}
+                        <p>AUCUN</p>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if team.pokemon2 %}
+                        <img width="40" src="{{ team.pokemon2.sprite }}">
+                        <p>{{ team.pokemon2.name }}</p>
+                    {% else %}
+                        <p>AUCUN</p>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if team.pokemon3 %}
+                        <img width="40" src="{{ team.pokemon3.sprite }}">
+                        <p>{{ team.pokemon3.name }}</p>
+                    {% else %}
+                        <p>AUCUN</p>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if team.pokemon4 %}
+                        <img width="40" src="{{ team.pokemon4.sprite }}">
+                        <p>{{ team.pokemon4.name }}</p>
+                    {% else %}
+                        <p>AUCUN</p>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if team.pokemon5 %}
+                        <img width="40" src="{{ team.pokemon5.sprite }}">
+                        <p>{{ team.pokemon5.name }}</p>
+                    {% else %}
+                        <p>AUCUN</p>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if team.pokemon6 %}
+                        <img width="40" src="{{ team.pokemon6.sprite }}">
+                        <p>{{ team.pokemon6.name }}</p>
+                    {% else %}
+                        <p>AUCUN</p>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <form action="{% url "editTeam" %}" method="get">
+        <input id="searchInput" type="text" name="name">
+        <input id="id" hidden type="text" name="id" value="{{ id }}">
+        <input type="submit" value="Search">
+    </form>
+    <div class="container mt-5">
+        <div class="row">
+            {% for pokemon in pokemons %}
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pokemonCard">
+                    <img width="40" src="{{ pokemon.sprite }}">
+                    <p class="pokemon">{{ pokemon.name }}</p>
+                    <a href="/editTeam/?id={{ id }}" type="button" class="btn"
+                       style="background-color: wheat; color:#363832; border-color: wheat">Choisir</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 </main>
 </body>

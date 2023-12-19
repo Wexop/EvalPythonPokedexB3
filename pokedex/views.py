@@ -47,7 +47,44 @@ def fight(request):
 
 
 def editTeam(request):
-    return render(request, "Combat/teamEdit.html")
+    name = request.GET.get("name")
+    id = request.GET.get("id")
+
+    if not id:
+        newPokeTeam = Pokemon_team.objects.create()
+        id = newPokeTeam.id
+        return redirect(f"/editTeam/?id={id}")
+
+    pokemonTeam = Pokemon_team.objects.get(id=id)
+
+    team = {
+        }
+
+    if pokemonTeam.pokemon1 > 0:
+        team["pokemon1"] = Pokemon.objects.get(pokemonId=pokemonTeam.pokemon1)
+    if pokemonTeam.pokemon2 > 0:
+        team["pokemon2"] = Pokemon.objects.get(pokemonId=pokemonTeam.pokemon2)
+    if pokemonTeam.pokemon3 > 0:
+        team["pokemon3"] = Pokemon.objects.get(pokemonId=pokemonTeam.pokemon3)
+    if pokemonTeam.pokemon1 > 0:
+        team["pokemon4"] = Pokemon.objects.get(pokemonId=pokemonTeam.pokemon4)
+    if pokemonTeam.pokemon4 > 0:
+        team["pokemon5"] = Pokemon.objects.get(pokemonId=pokemonTeam.pokemon5)
+    if pokemonTeam.pokemon5 > 0:
+        team["pokemon1"] = Pokemon.objects.get(pokemonId=pokemonTeam.pokemon1)
+    if pokemonTeam.pokemon6 > 0:
+        team["pokemon6"] = Pokemon.objects.get(pokemonId=pokemonTeam.pokemon6)
+
+
+    pokemons = Pokemon.objects.all()
+    if name:
+        pokemons = Pokemon.objects.filter(name__contains=name)
+    context = {
+        "pokemons": pokemons,
+        "team": team,
+        "id": id,
+    }
+    return render(request, "Combat/teamEdit.html", context)
 
 
 def pokemon(request, id):

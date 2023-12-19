@@ -70,12 +70,12 @@ class Pokemon(models.Model):
 
 
 class Pokemon_team(models.Model):
-    pokemon1 = models.IntegerField(default=0)
-    pokemon2 = models.IntegerField(default=0)
-    pokemon3 = models.IntegerField(default=0)
-    pokemon4 = models.IntegerField(default=0)
-    pokemon5 = models.IntegerField(default=0)
-    pokemon6 = models.IntegerField(default=0)
+    pokemon1 = models.IntegerField(default=1)
+    pokemon2 = models.IntegerField(default=1)
+    pokemon3 = models.IntegerField(default=1)
+    pokemon4 = models.IntegerField(default=1)
+    pokemon5 = models.IntegerField(default=1)
+    pokemon6 = models.IntegerField(default=1)
 
 class Combat(models.Model):
     pokemonHp1 = models.IntegerField(default=0)

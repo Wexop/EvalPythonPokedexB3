@@ -23,12 +23,13 @@ def updateBDD(request):
 
 def fightHome(request):
     selected = request.GET.get('selected')
+
+    teams = Pokemon_team.objects.all()
+
     if selected:
         selected = int(selected)
     else:
-        selected = 1
-
-    teams = Pokemon_team.objects.all()
+        selected = teams[0].id
 
     pokemonTeams = {}
 

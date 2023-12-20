@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 
 from api import Api
-from pokedex.models import Pokemon, Pokemon_team, Combat
+from pokedex.models import Pokemon, Pokemon_team
 
 api = Api()
 
@@ -22,10 +22,11 @@ def updateBDD(request):
 
 
 def fightHome(request):
-
     selected = request.GET.get('selected')
     if selected:
         selected = int(selected)
+    else:
+        selected = 1
 
     teams = Pokemon_team.objects.all()
 

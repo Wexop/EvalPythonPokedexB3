@@ -83,35 +83,99 @@ def fight(request):
     listPokemonIA = {
         'pokemonIA1': {
             'pokemon':Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId1),
-            'hp': combatExisted.pokemonIAId1
+            'hp': combatExisted.pokemonIAHp1
         },
         'pokemonIA2': {
             'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId2),
-            'hp': combatExisted.pokemonIAId3
+            'hp': combatExisted.pokemonIAHp2
         },
         'pokemonIA3': {
             'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId3),
-            'hp': combatExisted.pokemonIAId3
+            'hp': combatExisted.pokemonIAHp3
         },
         'pokemonIA4': {
             'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId4),
-            'hp': combatExisted.pokemonIAId4
+            'hp': combatExisted.pokemonIAHp4
         },
         'pokemonIA5': {
             'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId5),
-            'hp': combatExisted.pokemonIAId5
+            'hp': combatExisted.pokemonIAHp5
         },
         'pokemonIA6': {
             'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId6),
-            'hp': combatExisted.pokemonIAId6
+            'hp': combatExisted.pokemonIAHp6
         }
     }
 
     context = {'id_team': team.id,
+               'id': id,
                'listpokemons': listPokemon,
-               'listpokemonsIA': listPokemonIA
+               'listpokemonsIA': listPokemonIA,
+               'selected': 17,
+                'selectedIA': 88
                }
     return render(request, "Combat/fight.html", context)
+
+def updateHPAttack(request):
+    id = request.GET.get("id")
+    id_team = request.GET.get("id_team")
+    pokemonId = request.GET.get("pokemon")
+    pokemonIAId = request.GET.get("pokemonIa")
+
+    pokemon = Pokemon.objects.get(pokemonId=pokemonId)
+    attack = pokemon.attack
+    defense = pokemon.defense
+    speed = pokemon.speed
+    pokemonIA = Pokemon.objects.get(pokemonId=pokemonIAId)
+    attackIA = pokemonIA.attack
+    defenseIA = pokemonIA.defense
+    speedIA = pokemonIA.speed
+
+    combat = Combat.objects.get(id=id)
+
+    while (True):
+        if (speed > speedIA):
+            if (defenseIA < attack):
+                combat.pokemonIAHp1 -= (attack - defenseIA)
+            else:
+                combat.pokemonIAHp1 -= 1
+            if (combat.pokemonIAHp1 <= 0):
+                combat.pokemonIAHp1 = 0
+                break
+
+            if (defense < attackIA):
+                combat.pokemonHp1 -= (attackIA - defense)
+            else:
+                combat.pokemonHp1 -= 1
+            if (combat.pokemonHp1 <= 0):
+                combat.pokemonHp1 = 0
+
+        else:
+            if (defense < attackIA):
+                combat.pokemonHp1 -= (attackIA - defense)
+            else:
+                combat.pokemonHp1 -= 1
+            if (combat.pokemonHp1 <= 0):
+                combat.pokemonHp1 = 0
+                break
+
+            if (defenseIA < attack):
+                combat.pokemonIAHp1 -= (attack - defenseIA)
+            else:
+                combat.pokemonIAHp1 -= 1
+            if (combat.pokemonIAHp1 <= 0):
+                combat.pokemonIAHp1 = 0
+
+        break
+
+    combat.save()
+
+    return redirect(f"/fight/?id={id}&id_team={id_team}")
+
+def updateHPAttackSpe(request):
+    id = request.GET.get("id")
+    id_team = request.GET.get("id_team")
+    return redirect(f"/fight/?id={id}&id_team={id_team}")
 
 def editTeam(request):
     return render(request, "Combat/teamEdit.html")

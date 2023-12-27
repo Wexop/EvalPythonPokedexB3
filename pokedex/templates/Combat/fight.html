@@ -25,12 +25,12 @@
             {% endfor %}
         </div>
         <div class="col-6">
-            <img src="{{ listpokemonsIA.pokemonIA1.pokemon.sprite }}" alt="">
+            <img src="{{ listpokemonsIA.pokemonIA1.pokemon.sprite }}" width=120px height=auto>
             <p>{{ listpokemonsIA.pokemonIA1.pokemon.name }}</p>
-            <img src="{{ listpokemons.pokemon1.pokemon.sprite }}"></img>
+            <img src="{{ listpokemons.pokemon1.pokemon.sprite }}" width=120px height=auto></img>
             <p>{{ listpokemons.pokemon1.pokemon.name }}</p>
-            <a href="">Attaque</a>
-            <a href="">Attaque spéciale</a>
+            <a href="/fight/updateHPAttack?id={{ id }}&id_team={{ id_team }}&pokemon={{ selected }}&pokemonIa={{ selectedIA }}">Attaque</a>
+            <a href="/fight/updateHPAttackSpe?id={{ id }}&id_team={{ id_team }}">Attaque spéciale</a>
         </div>
         <div class="col-2">
             {% for pokemonIA in listpokemonsIA.values %}

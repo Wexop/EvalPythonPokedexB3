@@ -1,4 +1,3 @@
-
 from django.http import *
 from django.shortcuts import render, redirect
 from django.template import loader
@@ -24,6 +23,7 @@ def updateBDD(request):
 
 def fightHome(request):
     return render(request, "Combat/teamChoice.html")
+
 
 def fight(request):
     id = request.GET.get("id")
@@ -82,7 +82,7 @@ def fight(request):
 
     listPokemonIA = {
         'pokemonIA1': {
-            'pokemon':Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId1),
+            'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId1),
             'hp': combatExisted.pokemonIAHp1
         },
         'pokemonIA2': {
@@ -107,14 +107,76 @@ def fight(request):
         }
     }
 
+    selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon1),
+        'selection': team.pokemon1
+    }
+    selectedPokemonIA = {
+        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId1),
+        'selection': combatExisted.pokemonIAId1
+    }
+
+    if combatExisted.pokemonHp1 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon2),
+        'selection': team.pokemon2
+    }
+    elif combatExisted.pokemonHp2 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon3),
+        'selection': team.pokemon3
+    }
+    elif combatExisted.pokemonHp3 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon4),
+        'selection': team.pokemon4
+    }
+    elif combatExisted.pokemonHp4 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon5),
+        'selection': team.pokemon5
+    }
+    elif combatExisted.pokemonHp5 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon6),
+        'selection': team.pokemon6
+    }
+
+    if combatExisted.pokemonIAHp1 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId2),
+        'selection': combatExisted.pokemonIAId2
+    }
+    elif combatExisted.pokemonIAHp2 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId3),
+        'selection': combatExisted.pokemonIAId3
+    }
+    elif combatExisted.pokemonIAHp3 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId4),
+        'selection': combatExisted.pokemonIAId4
+    }
+    elif combatExisted.pokemonIAHp4 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId5),
+        'selection': combatExisted.pokemonIAId5
+    }
+    elif combatExisted.pokemonIAHp5 <= 0:
+        selectedPokemon = {
+        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId6),
+        'selection': combatExisted.pokemonIAId6
+    }
+
     context = {'id_team': team.id,
                'id': id,
                'listpokemons': listPokemon,
                'listpokemonsIA': listPokemonIA,
-               'selected': 17,
-                'selectedIA': 88
+               'selected': selectedPokemon,
+               'selectedIA': selectedPokemonIA
                }
     return render(request, "Combat/fight.html", context)
+
 
 def updateHPAttack(request):
     id = request.GET.get("id")
@@ -133,37 +195,37 @@ def updateHPAttack(request):
 
     combat = Combat.objects.get(id=id)
 
-    while (True):
-        if (speed > speedIA):
-            if (defenseIA < attack):
+    while True:
+        if speed > speedIA:
+            if defenseIA < attack:
                 combat.pokemonIAHp1 -= (attack - defenseIA)
             else:
                 combat.pokemonIAHp1 -= 1
-            if (combat.pokemonIAHp1 <= 0):
+            if combat.pokemonIAHp1 <= 0:
                 combat.pokemonIAHp1 = 0
                 break
 
-            if (defense < attackIA):
+            if defense < attackIA:
                 combat.pokemonHp1 -= (attackIA - defense)
             else:
                 combat.pokemonHp1 -= 1
-            if (combat.pokemonHp1 <= 0):
+            if combat.pokemonHp1 <= 0:
                 combat.pokemonHp1 = 0
 
         else:
-            if (defense < attackIA):
+            if defense < attackIA:
                 combat.pokemonHp1 -= (attackIA - defense)
             else:
                 combat.pokemonHp1 -= 1
-            if (combat.pokemonHp1 <= 0):
+            if combat.pokemonHp1 <= 0:
                 combat.pokemonHp1 = 0
                 break
 
-            if (defenseIA < attack):
+            if defenseIA < attack:
                 combat.pokemonIAHp1 -= (attack - defenseIA)
             else:
                 combat.pokemonIAHp1 -= 1
-            if (combat.pokemonIAHp1 <= 0):
+            if combat.pokemonIAHp1 <= 0:
                 combat.pokemonIAHp1 = 0
 
         break
@@ -172,14 +234,15 @@ def updateHPAttack(request):
 
     return redirect(f"/fight/?id={id}&id_team={id_team}")
 
+
 def updateHPAttackSpe(request):
     id = request.GET.get("id")
     id_team = request.GET.get("id_team")
     return redirect(f"/fight/?id={id}&id_team={id_team}")
 
+
 def editTeam(request):
     return render(request, "Combat/teamEdit.html")
-
 
 
 def pokemon(request, id):

@@ -25,11 +25,11 @@
             {% endfor %}
         </div>
         <div class="col-6">
-            <img src="{{ listpokemonsIA.pokemonIA1.pokemon.sprite }}" width=120px height=auto>
-            <p>{{ listpokemonsIA.pokemonIA1.pokemon.name }}</p>
-            <img src="{{ listpokemons.pokemon1.pokemon.sprite }}" width=120px height=auto></img>
-            <p>{{ listpokemons.pokemon1.pokemon.name }}</p>
-            <a href="/fight/updateHPAttack?id={{ id }}&id_team={{ id_team }}&pokemon={{ selected }}&pokemonIa={{ selectedIA }}">Attaque</a>
+            <img src="{{ selectedIA.pokemon.sprite }}" width=120px height=auto>
+            <p>{{ selectedIA.pokemon.name }}</p>
+            <img src="{{ selected.pokemon.sprite }}" width=120px height=auto></img>
+            <p>{{ selected.pokemon.name }}</p>
+            <a href="/fight/updateHPAttack?id={{ id }}&id_team={{ id_team }}&pokemon={{ selected.selection }}&pokemonIa={{ selectedIA.selection }}">Attaque</a>
             <a href="/fight/updateHPAttackSpe?id={{ id }}&id_team={{ id_team }}">Attaque spéciale</a>
         </div>
         <div class="col-2">

@@ -22,7 +22,34 @@ def updateBDD(request):
 
 
 def fightHome(request):
-    return render(request, "Combat/teamChoice.html")
+    selected = request.GET.get('selected')
+
+    teams = Pokemon_team.objects.all()
+
+    if selected:
+        selected = int(selected)
+    else:
+        selected = teams[0].id
+
+    pokemonTeams = {}
+
+    for team in teams:
+        pokemonTeams[team.id] = {
+            "id": team.id,
+            "pokemon1": Pokemon.objects.get(pokemonId=team.pokemon1),
+            "pokemon2": Pokemon.objects.get(pokemonId=team.pokemon2),
+            "pokemon3": Pokemon.objects.get(pokemonId=team.pokemon3),
+            "pokemon4": Pokemon.objects.get(pokemonId=team.pokemon4),
+            "pokemon5": Pokemon.objects.get(pokemonId=team.pokemon5),
+            "pokemon6": Pokemon.objects.get(pokemonId=team.pokemon6),
+        }
+
+    context = {
+        "teams": pokemonTeams,
+        "selected": selected
+    }
+    return render(request, "Combat/teamChoice.html", context)
+
 
 
 def fight(request):
@@ -241,9 +268,72 @@ def updateHPAttackSpe(request):
     return redirect(f"/fight/?id={id}&id_team={id_team}")
 
 
-def editTeam(request):
-    return render(request, "Combat/teamEdit.html")
 
+def editTeam(request):
+    name = request.GET.get("name")
+    id = request.GET.get("id")
+    selected = request.GET.get("selected")
+
+    if not id:
+        newPokeTeam = Pokemon_team.objects.create()
+        id = newPokeTeam.id
+        return redirect(f"/editTeam/?id={id}&selected=1")
+
+    pokemonTeam = Pokemon_team.objects.get(id=id)
+
+    team = {
+        "pokemon1": Pokemon.objects.get(pokemonId=pokemonTeam.pokemon1),
+        "pokemon2": Pokemon.objects.get(pokemonId=pokemonTeam.pokemon2),
+        "pokemon3": Pokemon.objects.get(pokemonId=pokemonTeam.pokemon3),
+        "pokemon4": Pokemon.objects.get(pokemonId=pokemonTeam.pokemon4),
+        "pokemon5": Pokemon.objects.get(pokemonId=pokemonTeam.pokemon5),
+        "pokemon6": Pokemon.objects.get(pokemonId=pokemonTeam.pokemon6),
+    }
+
+    pokemons = Pokemon.objects.all()
+    if name:
+        pokemons = Pokemon.objects.filter(name__contains=name)
+    context = {
+        "pokemons": pokemons,
+        "team": team,
+        "id": id,
+        "selected": selected,
+        "name": name
+    }
+    return render(request, "Combat/teamEdit.html", context)
+
+
+def addToTeam(request):
+    id = request.GET.get("id")
+    selected = request.GET.get("selected")
+    pokemonId = request.GET.get("pokemonId")
+    name = request.GET.get("name")
+
+    pokemonTeam = Pokemon_team.objects.get(id=id)
+
+    if selected == "1":
+        pokemonTeam.pokemon1 = pokemonId
+    if selected == "2":
+        pokemonTeam.pokemon2 = pokemonId
+    if selected == "3":
+        pokemonTeam.pokemon3 = pokemonId
+    if selected == "4":
+        pokemonTeam.pokemon4 = pokemonId
+    if selected == "5":
+        pokemonTeam.pokemon5 = pokemonId
+    if selected == "6":
+        pokemonTeam.pokemon6 = pokemonId
+
+    pokemonTeam.save()
+
+    return redirect(f"/editTeam/?id={id}&selected={selected}&name={name}")
+
+
+def deleteTeam(request, id):
+    team = Pokemon_team.objects.get(id=id)
+    team.delete()
+
+    return redirect("/fightHome/")
 
 def pokemon(request, id):
     idSupp = id + 1

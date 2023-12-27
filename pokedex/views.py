@@ -195,44 +195,109 @@ def updateHPAttack(request):
 
     combat = Combat.objects.get(id=id)
 
-    while True:
+    team = Pokemon_team.objects.get(id=id_team)
+
+    HP = 0
+    HPIA = 0
+
+    if pokemonId == team.pokemon1:
+        HP = combat.pokemonHp1
+    elif pokemonId == team.pokemon2:
+        HP = combat.pokemonHp2
+    elif pokemonId == team.pokemon3:
+        HP = combat.pokemonHp3
+    elif pokemonId == team.pokemon4:
+        HP = combat.pokemonHp4
+    elif pokemonId == team.pokemon5:
+        HP = combat.pokemonHp5
+    elif pokemonId == team.pokemon6:
+        HP = combat.pokemonHp6
+
+    if pokemonIAId == combat.pokemonIAId1:
+        HPIA = combat.pokemonIAHp1
+    if pokemonIAId == combat.pokemonIAId2:
+        HPIA = combat.pokemonIAHp2
+    elif pokemonIAId == combat.pokemonIAId3:
+        HPIA = combat.pokemonIAHp3
+    elif pokemonIAId == combat.pokemonIAId4:
+        HPIA = combat.pokemonIAHp4
+    elif pokemonIAId == combat.pokemonIAId5:
+        HPIA = combat.pokemonIAHp5
+    elif pokemonIAId == combat.pokemonIAId6:
+        HPIA = combat.pokemonIAHp6
+
+    atckIndicator = True
+
+    while atckIndicator:
         if speed > speedIA:
             if defenseIA < attack:
-                combat.pokemonIAHp1 -= (attack - defenseIA)
+                HPIA -= (attack - defenseIA)
             else:
-                combat.pokemonIAHp1 -= 1
-            if combat.pokemonIAHp1 <= 0:
-                combat.pokemonIAHp1 = 0
+                HPIA -= 1
+            if HPIA <= 0:
+                HPIA = 0
                 break
 
             if defense < attackIA:
-                combat.pokemonHp1 -= (attackIA - defense)
+                HP -= (attackIA - defense)
             else:
-                combat.pokemonHp1 -= 1
-            if combat.pokemonHp1 <= 0:
-                combat.pokemonHp1 = 0
-
+                HP -= 1
+            if HP <= 0:
+                HP = 0
         else:
             if defense < attackIA:
-                combat.pokemonHp1 -= (attackIA - defense)
+                HP -= (attackIA - defense)
             else:
-                combat.pokemonHp1 -= 1
-            if combat.pokemonHp1 <= 0:
-                combat.pokemonHp1 = 0
+                HP -= 1
+            if HP <= 0:
+                HP = 0
                 break
 
             if defenseIA < attack:
-                combat.pokemonIAHp1 -= (attack - defenseIA)
+                HPIA -= (attack - defenseIA)
             else:
-                combat.pokemonIAHp1 -= 1
-            if combat.pokemonIAHp1 <= 0:
-                combat.pokemonIAHp1 = 0
+                HPIA -= 1
+            if HPIA <= 0:
+                HPIA = 0
 
-        break
+        atckIndicator = False
+
+    if pokemonId == team.pokemon1:
+        combat.pokemonHp1 = HP
+    elif pokemonId == team.pokemon2:
+        combat.pokemonHp2 = HP
+    elif pokemonId == team.pokemon3:
+        combat.pokemonHp3 = HP
+    elif pokemonId == team.pokemon4:
+        combat.pokemonHp4 = HP
+    elif pokemonId == team.pokemon5:
+        combat.pokemonHp5 = HP
+    elif pokemonId == team.pokemon6:
+        combat.pokemonHp6 = HP
+
+    if pokemonIAId == combat.pokemonIAId1:
+        combat.pokemonIAHp1 = HPIA
+    elif pokemonIAId == combat.pokemonIAId2:
+        combat.pokemonIAHp2 = HPIA
+    elif pokemonIAId == combat.pokemonIAId3:
+        combat.pokemonIAHp3 = HPIA
+    elif pokemonIAId == combat.pokemonIAId4:
+        combat.pokemonIAHp4 = HPIA
+    elif pokemonIAId == combat.pokemonIAId5:
+        combat.pokemonIAHp5 = HPIA
+    elif pokemonIAId == combat.pokemonIAId6:
+        combat.pokemonIAHp6 = HPIA
 
     combat.save()
 
-    return redirect(f"/fight/?id={id}&id_team={id_team}")
+    context = {
+        'hp': HP,
+        'hpia': HPIA,
+        'HP': combat.pokemonHp1,
+        'HPIA':combat.pokemonIAHp1,
+    }
+    return render(request, "Combat/test.html", context)
+    # return redirect(f"/fight/?id={id}&id_team={id_team}")
 
 
 def updateHPAttackSpe(request):

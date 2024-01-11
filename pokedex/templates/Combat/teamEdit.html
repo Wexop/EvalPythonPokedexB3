@@ -19,6 +19,17 @@
             background-color: bisque;
             border-radius: 20px;
         }
+
+        .cardPoke {
+            transform: scale(1);
+            transition: 0.3s ease-in-out;
+        }
+
+        .cardPoke:hover {
+            transform: scale(1.03);
+            transition: 0.2s ease-in-out;
+            box-shadow: 9px 9px 8px 1px #c17b00;
+        }
     </style>
 
 </head>
@@ -120,8 +131,9 @@
             <div class="row">
                 {% for pokemon in pokemons %}
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                        <div class="card">
-                            <img class="card-img-top" src="{{ pokemon.sprite }}" alt="{{ pokemon.name }}">
+                        <div class="card cardPoke">
+                            <img class="card-img-top w-50 align-self-center pt-3" src="{{ pokemon.sprite }}"
+                                 alt="{{ pokemon.name }}">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: black;">{{ pokemon.name | capfirst }}</h5>
                             </div>

@@ -27,7 +27,6 @@ Le choix du "Dark mode" pour l'application est un choix des developpeurs.
 Lors de la première utilisation, il faut attendre le chargement des pokemons, ensuite en cliquant sur le bouton "Pokedex", on accède à une page affichant une liste de pokemon (de 1 à 151)
 
 ![Homepage](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/Pasted%20image%2020231220161655.png?raw=true)
-
 *Page d'accueil*
 
 Le boutons "Update" sert à actualiser les Pokémon dans la base de donnée.
@@ -61,3 +60,7 @@ Une équipe peux sois être "Choisie" pour combattre, "Modifiée" ou "Supprimée
 Pour modifier le Pokémon cliqué dessus et sélectionner le Pokémon par lequel vous souhaités le remplacer.
 On peux aussi utiliser une barre de recherche pour trouver le Pokémon adapté.
 
+# Repos Github
+
+Le repos reste disponible sur Github à l'adresse suivante : 
+https://github.com/Wexop/EvalPythonPokedexB3

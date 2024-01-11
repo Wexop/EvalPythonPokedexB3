@@ -21,7 +21,10 @@
                  alt="IndexGIF">
         </div>
         {% if updating %}
-            <h2>Chargement des pokémons....</h2>
+            <div style="text-align: center; margin: 1em 0; color: wheat">
+                <h2>Chargement des pokémons....</h2>
+            </div>
+
             <script>fetch("/update/").then(() => location.reload())</script>
         {% else %}
             <div style="display: flex; justify-content: center; align-items: center; margin: 2em 0;">

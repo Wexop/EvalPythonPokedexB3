@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>{{ pokemon.name | upper }}</title>
+    <title>Modification de l'équipe</title>
 
     <style>
         #teamTable > tr > td {
@@ -25,100 +25,118 @@
 <body style="background-color:#363832">
 <main style="text-align: center; margin: 1em 0; color: wheat">
 
-    <h1>Edit</h1>
-    <div class="container text-left">
-        <a href="/fightHome/" type="button" class="btn"
-           style="background-color: wheat; color:#363832; border-color: wheat">Retour</a>
+    <div style="margin: 1.5rem 0;">
+        <h1>Modification de l'équipe</h1>
     </div>
-
-    <div class="d-flex w-100 justify-content-center">
-        <table id="teamTable" class="w-25">
-            <tr>
-                <td class="{% if selected == "1" %} selected {% endif %}">
-                    <a href="/editTeam?id={{ id }}&selected=1&name={% if name and name != "None" %}{{ name }}{% endif %}">
-                        {% if team.pokemon1 %}
-                            <img width="40" src="{{ team.pokemon1.sprite }}">
-                            <p>{{ team.pokemon1.name }}</p>
-                        {% else %}
-                            <p>AUCUN</p>
-                        {% endif %}
-                    </a>
-                </td>
-                <td class="{% if selected == "2" %} selected {% endif %}">
-                    <a href="/editTeam?id={{ id }}&selected=2&name={% if name and name != "None" %}{{ name }}{% endif %}">
-                        {% if team.pokemon2 %}
-                            <img width="40" src="{{ team.pokemon2.sprite }}">
-                            <p>{{ team.pokemon2.name }}</p>
-                        {% else %}
-                            <p>AUCUN</p>
-                        {% endif %}
-                    </a>
-                </td>
-                <td class="{% if selected == "3" %} selected {% endif %}">
-                    <a href="/editTeam?id={{ id }}&selected=3&name={% if name and name != "None" %}{{ name }}{% endif %}">
-                        {% if team.pokemon3 %}
-                            <img width="40" src="{{ team.pokemon3.sprite }}">
-                            <p>{{ team.pokemon3.name }}</p>
-                        {% else %}
-                            <p>AUCUN</p>
-                        {% endif %}
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td class="{% if selected == "4" %} selected {% endif %}">
-                    <a href="/editTeam?id={{ id }}&selected=4&name={% if name and name != "None" %}{{ name }}{% endif %}">
-                        {% if team.pokemon4 %}
-                            <img width="40" src="{{ team.pokemon4.sprite }}">
-                            <p>{{ team.pokemon4.name }}</p>
-                        {% else %}
-                            <p>AUCUN</p>
-                        {% endif %}
-                    </a>
-                </td>
-                <td class="{% if selected == "5" %} selected {% endif %}">
-                    <a href="/editTeam?id={{ id }}&selected=5&name={% if name and name != "None" %}{{ name }}{% endif %}">
-                        {% if team.pokemon5 %}
-                            <img width="40" src="{{ team.pokemon5.sprite }}">
-                            <p>{{ team.pokemon5.name }}</p>
-                        {% else %}
-                            <p>AUCUN</p>
-                        {% endif %}
-                    </a>
-                </td>
-                <td class="{% if selected == "6" %} selected {% endif %}">
-                    <a href="/editTeam?id={{ id }}&selected=6&name={% if name and name != "None" %}{{ name }}{% endif %}">
-                        {% if team.pokemon6 %}
-                            <img width="40" src="{{ team.pokemon6.sprite }}">
-                            <p>{{ team.pokemon6.name }}</p>
-                        {% else %}
-                            <p>AUCUN</p>
-                        {% endif %}
-                    </a>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-    <form action="{% url "editTeam" %}" method="get">
-        <input id="searchInput" type="text" name="name" value="{% if name != "None" and name %}{{ name }}{% endif %}">
-        <input id="id" hidden type="text" name="id" value="{{ id }}">
-        <input id="selected" hidden type="text" name="selected" value="{{ selected }}">
-        <input type="submit" value="Search">
-    </form>
-    <div class="container mt-5">
-        <div class="row">
-            {% for pokemon in pokemons %}
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 pokemonCard">
-                    <img width="40" src="{{ pokemon.sprite }}">
-                    <p class="pokemon">{{ pokemon.name }}</p>
-                    <a href="/addToTeam/?id={{ id }}&selected={{ selected }}&pokemonId={{ pokemon.pokemonId }}&name={% if name != "None" and name %}{{ name }}{% endif %}" type="button" class="btn"
-                       style="background-color: wheat; color:#363832; border-color: wheat">Choisir</a>
-                </div>
-            {% endfor %}
+    <div class="card mx-auto" style="width: min-content; margin: 1em 0;">
+        <div class="d-flex w-100 justify-content-center">
+            <table id="teamTable" class="w-25">
+                <tr>
+                    <td class="{% if selected == "1" %} selected {% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=1&name=
+                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                            {% if team.pokemon1 %}
+                                <img width="100" src="{{ team.pokemon1.sprite }}">
+                                <p>{{ team.pokemon1.name }}</p>
+                            {% else %}
+                                <p>AUCUN</p>
+                            {% endif %}
+                        </a>
+                    </td>
+                    <td class="{% if selected == "2" %} selected {% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=2&name=
+                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                            {% if team.pokemon2 %}
+                                <img width="100" src="{{ team.pokemon2.sprite }}">
+                                <p>{{ team.pokemon2.name }}</p>
+                            {% else %}
+                                <p>AUCUN</p>
+                            {% endif %}
+                        </a>
+                    </td>
+                    <td class="{% if selected == "3" %} selected {% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=3&name=
+                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                            {% if team.pokemon3 %}
+                                <img width="100" src="{{ team.pokemon3.sprite }}">
+                                <p>{{ team.pokemon3.name }}</p>
+                            {% else %}
+                                <p>AUCUN</p>
+                            {% endif %}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="{% if selected == "4" %} selected {% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=4&name=
+                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                            {% if team.pokemon4 %}
+                                <img width="100" src="{{ team.pokemon4.sprite }}">
+                                <p>{{ team.pokemon4.name }}</p>
+                            {% else %}
+                                <p>AUCUN</p>
+                            {% endif %}
+                        </a>
+                    </td>
+                    <td class="{% if selected == "5" %} selected {% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=5&name=
+                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                            {% if team.pokemon5 %}
+                                <img width="100" src="{{ team.pokemon5.sprite }}">
+                                <p>{{ team.pokemon5.name }}</p>
+                            {% else %}
+                                <p>AUCUN</p>
+                            {% endif %}
+                        </a>
+                    </td>
+                    <td class="{% if selected == "6" %} selected {% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=6&name=
+                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                            {% if team.pokemon6 %}
+                                <img width="100" src="{{ team.pokemon6.sprite }}">
+                                <p>{{ team.pokemon6.name }}</p>
+                            {% else %}
+                                <p>AUCUN</p>
+                            {% endif %}
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="card-footer">
+            <a href="/fightHome/" type="button" class="btn btn-outline-info">Valider</a>
         </div>
     </div>
+    <div class="form-group container" style="flex-grow: 1;">
+        <form action="{% url "editTeam" %}" method="get">
+            <input class="form-control" id="searchInput" type="text" name="name"
+                   style=" width: 100%"
+                   value="{% if name != "None" and name %}{{ name }}{% endif %}">
+            <input id="id" hidden type="text" name="id" value="{{ id }}">
+            <input id="selected" hidden type="text" name="selected" value="{{ selected }}">
+            <input style="margin: 1em 0;" class="btn btn-danger" type="submit" value="Search">
+        </form>
+        <div class="container mt-5">
+            <div class="row">
+                {% for pokemon in pokemons %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ pokemon.sprite }}" alt="{{ pokemon.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: black;">{{ pokemon.name | capfirst }}</h5>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/addToTeam/?id={{ id }}&selected={{ selected }}&pokemonId={{ pokemon.pokemonId }}&name=
+                            {% if name != "None" and name %}{{ name }}{% endif %}" type="button" class="btn"
+                                   style="background-color: wheat; color:#363832; border-color: wheat">Choisir</a>
+                            </div>
+                        </div>
+                    </div>
 
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </main>
 </body>
 </html>

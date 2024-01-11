@@ -26,7 +26,7 @@ Le choix du "Dark mode" pour l'application est un choix des developpeurs.
 
 Lors de la première utilisation, il faut attendre le chargement des pokemons, ensuite en cliquant sur le bouton "Pokedex", on accède à une page affichant une liste de pokemon (de 1 à 151)
 
-![Homepage](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/Pasted%20image%20231220161655.png?raw=true)
+![Homepage](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/Pasted%20image%2020231220161655.png?raw=true)
 
 *Page d'accueil*
 

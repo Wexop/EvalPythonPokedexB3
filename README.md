@@ -32,12 +32,12 @@ Lors de la première utilisation, il faut attendre le chargement des pokemons, e
 
 Le boutons "Update" sert à actualiser les Pokémon dans la base de donnée.
 
-![PokemonList](AssetsDocs/Pasted image 20231220161617.png?raw=true)
+![PokemonList](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/Pasted%20image%2020231220161617.png?raw=true)
 *Liste des Pokémons*
 
 Pour avoir plus d'informations il suffit de cliquer sur le bouton "En Savoir plus" affichant ainsi plus d'informations sur le Pokémon :
 
-![Pikaaaaa](AssetsDocs/Pasted image 20231220161918.png?raw=true)
+![Pikaaaaa](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/Pasted%20image%2020231220161918.png?raw=true)
 *Page de Pikachu*
 # Partie Combat
 
@@ -45,17 +45,17 @@ Pour avoir plus d'informations il suffit de cliquer sur le bouton "En Savoir plu
 
 La gestion des équipes se fait via la page "Combat" accessible depuis la page d'accueil
 
-![GestionEquipe2](AssetsDocs/Pasted image 20240111085827.png?raw=true)
+![GestionEquipe2](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/Pasted%20image%2020240111085827.png?raw=true)
 *Page de Gestions des Equipes*
 
-![GestionEquipe2](AssetsDocs/Pasted image 20240111084616.png?raw=true)
+![GestionEquipe2](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/Pasted%20image%2020240111084616.png?raw=true)
 *Page de Gestions des Equipes*
 
 Une équipe peux sois être "Choisie" pour combattre, "Modifiée" ou "Supprimée".
 
 ### Création d'une équipe
 
-![CréaEquipe](AssetsDocs/Pasted image 20240111084842.png?raw=true)
+![CréaEquipe](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/Pasted%20image%2020240111084842.png?raw=true)
 *Page de création d'une équipe*
 
 Pour modifier le Pokémon cliqué dessus et sélectionner le Pokémon par lequel vous souhaités le remplacer.

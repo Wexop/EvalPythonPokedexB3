@@ -44,8 +44,7 @@
             <table id="teamTable" class="w-25">
                 <tr>
                     <td class="{% if selected == "1" %} selected {% endif %}">
-                        <a href="/editTeam?id={{ id }}&selected=1&name=
-                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=1&name={{ name }}">
                             {% if team.pokemon1 %}
                                 <img width="100" src="{{ team.pokemon1.sprite }}">
                                 <p>{{ team.pokemon1.name }}</p>
@@ -55,8 +54,7 @@
                         </a>
                     </td>
                     <td class="{% if selected == "2" %} selected {% endif %}">
-                        <a href="/editTeam?id={{ id }}&selected=2&name=
-                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=2&name={{ name }}">
                             {% if team.pokemon2 %}
                                 <img width="100" src="{{ team.pokemon2.sprite }}">
                                 <p>{{ team.pokemon2.name }}</p>
@@ -66,8 +64,7 @@
                         </a>
                     </td>
                     <td class="{% if selected == "3" %} selected {% endif %}">
-                        <a href="/editTeam?id={{ id }}&selected=3&name=
-                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=3&name={{ name }}">
                             {% if team.pokemon3 %}
                                 <img width="100" src="{{ team.pokemon3.sprite }}">
                                 <p>{{ team.pokemon3.name }}</p>
@@ -79,8 +76,7 @@
                 </tr>
                 <tr>
                     <td class="{% if selected == "4" %} selected {% endif %}">
-                        <a href="/editTeam?id={{ id }}&selected=4&name=
-                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=4&name={{ name }}">
                             {% if team.pokemon4 %}
                                 <img width="100" src="{{ team.pokemon4.sprite }}">
                                 <p>{{ team.pokemon4.name }}</p>
@@ -90,8 +86,7 @@
                         </a>
                     </td>
                     <td class="{% if selected == "5" %} selected {% endif %}">
-                        <a href="/editTeam?id={{ id }}&selected=5&name=
-                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=5&name={{ name }}">
                             {% if team.pokemon5 %}
                                 <img width="100" src="{{ team.pokemon5.sprite }}">
                                 <p>{{ team.pokemon5.name }}</p>
@@ -101,8 +96,7 @@
                         </a>
                     </td>
                     <td class="{% if selected == "6" %} selected {% endif %}">
-                        <a href="/editTeam?id={{ id }}&selected=6&name=
-                            {% if name and name != "None" %}{{ name }}{% endif %}">
+                        <a href="/editTeam?id={{ id }}&selected=6&name={{ name }}">
                             {% if team.pokemon6 %}
                                 <img width="100" src="{{ team.pokemon6.sprite }}">
                                 <p>{{ team.pokemon6.name }}</p>
@@ -138,9 +132,11 @@
                                 <h5 class="card-title" style="color: black;">{{ pokemon.name | capfirst }}</h5>
                             </div>
                             <div class="card-footer">
-                                <a href="/addToTeam/?id={{ id }}&selected={{ selected }}&pokemonId={{ pokemon.pokemonId }}&name=
-                            {% if name != "None" and name %}{{ name }}{% endif %}" type="button" class="btn"
-                                   style="background-color: wheat; color:#363832; border-color: wheat">Choisir</a>
+                                <a
+                                        href="/addToTeam/?id={{ id }}&selected={{ selected }}&pokemonId={{ pokemon.pokemonId }}&name={{ name }}"
+                                        type="button"
+                                        class="btn"
+                                        style="background-color: wheat; color:#363832; border-color: wheat">Choisir</a>
                             </div>
                         </div>
                     </div>

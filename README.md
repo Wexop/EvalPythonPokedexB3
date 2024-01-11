@@ -44,7 +44,7 @@ Pour avoir plus d'informations il suffit de cliquer sur le bouton "En Savoir plu
 
 La gestion des équipes se fait via la page "Combat" accessible depuis la page d'accueil
 
-![GestionEquipe2](AssetsDocs/Pasted image 20240111085827.png)
+![GestionEquipe2](AssetsDocs/Pasted image 20240111085827.png?raw=true)
 *Page de Gestions des Equipes*
 
 ![GestionEquipe2](AssetsDocs/Pasted image 20240111084616.png)

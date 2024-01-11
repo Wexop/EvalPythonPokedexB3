@@ -16,10 +16,17 @@
     <h1 style="text-align: center; margin: 0.5em 0; color: wheat">Choix de l'équipe</h1>
     <div class="container d-flex justify-content-center">
         <a href="/" type="button" class="btn"
-           style="margin: 1rem; background-color: wheat; color:#363832; border-color: wheat">Retour à l'Accueil</a>
-        <a style="margin: 1rem;" class="btn btn-danger" href="/fight/?id_team={{ selected }}">COMBATTRE</a>
+           style="margin: 1rem; background-color: wheat; color:#363832; border-color: wheat">Retour à
+            l'Accueil</a>
+        {% if not noTeams %}<a style="margin: 1rem;" class="btn btn-danger" href="/fight/?id_team={{ selected }}">COMBATTRE</a> {% endif %}
         <a href="/editTeam" style="margin: 1rem;" class="btn btn-info">Ajouter une Equipe</a>
     </div>
+    {% if noTeams %}
+        <div class="container d-flex justify-content-center">
+            <h2 style="text-align: center; margin: 0.5em 0; color: wheat">Créez une équipe avant
+                de pouvoir combattre !</h2>
+        </div>
+    {% endif %}
     <div class="d-flex flex-column justify-content-center align-items-center">
         {% for team in teams.values %}
             <div style="margin: 1.5rem; max-width: max-content; background-color: bisque; padding: 20px; border-radius: 20px;{% if selected == team.id %}border: 5px solid #17a2b8{% endif %}">

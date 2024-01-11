@@ -29,7 +29,10 @@ def fightHome(request):
     if selected:
         selected = int(selected)
     else:
-        selected = teams[0].id
+        if (len(teams) > 0):
+            selected = teams[0].id
+        else:
+            selected = "";
 
     pokemonTeams = {}
 
@@ -46,10 +49,10 @@ def fightHome(request):
 
     context = {
         "teams": pokemonTeams,
-        "selected": selected
+        "selected": selected,
+        "noTeams": len(teams) == 0,
     }
     return render(request, "Combat/teamChoice.html", context)
-
 
 
 def fight(request):
@@ -145,55 +148,55 @@ def fight(request):
 
     if combatExisted.pokemonHp1 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon2),
-        'selection': team.pokemon2
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=team.pokemon2),
+            'selection': team.pokemon2
+        }
     elif combatExisted.pokemonHp2 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon3),
-        'selection': team.pokemon3
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=team.pokemon3),
+            'selection': team.pokemon3
+        }
     elif combatExisted.pokemonHp3 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon4),
-        'selection': team.pokemon4
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=team.pokemon4),
+            'selection': team.pokemon4
+        }
     elif combatExisted.pokemonHp4 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon5),
-        'selection': team.pokemon5
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=team.pokemon5),
+            'selection': team.pokemon5
+        }
     elif combatExisted.pokemonHp5 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=team.pokemon6),
-        'selection': team.pokemon6
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=team.pokemon6),
+            'selection': team.pokemon6
+        }
 
     if combatExisted.pokemonIAHp1 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId2),
-        'selection': combatExisted.pokemonIAId2
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId2),
+            'selection': combatExisted.pokemonIAId2
+        }
     elif combatExisted.pokemonIAHp2 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId3),
-        'selection': combatExisted.pokemonIAId3
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId3),
+            'selection': combatExisted.pokemonIAId3
+        }
     elif combatExisted.pokemonIAHp3 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId4),
-        'selection': combatExisted.pokemonIAId4
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId4),
+            'selection': combatExisted.pokemonIAId4
+        }
     elif combatExisted.pokemonIAHp4 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId5),
-        'selection': combatExisted.pokemonIAId5
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId5),
+            'selection': combatExisted.pokemonIAId5
+        }
     elif combatExisted.pokemonIAHp5 <= 0:
         selectedPokemon = {
-        'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId6),
-        'selection': combatExisted.pokemonIAId6
-    }
+            'pokemon': Pokemon.objects.get(pokemonId=combatExisted.pokemonIAId6),
+            'selection': combatExisted.pokemonIAId6
+        }
 
     context = {'id_team': team.id,
                'id': id,
@@ -268,7 +271,6 @@ def updateHPAttackSpe(request):
     return redirect(f"/fight/?id={id}&id_team={id_team}")
 
 
-
 def editTeam(request):
     name = request.GET.get("name")
     id = request.GET.get("id")
@@ -334,6 +336,7 @@ def deleteTeam(request, id):
     team.delete()
 
     return redirect("/fightHome/")
+
 
 def pokemon(request, id):
     idSupp = id + 1

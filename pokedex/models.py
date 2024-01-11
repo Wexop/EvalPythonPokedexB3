@@ -1,5 +1,5 @@
 from django.db import models
-
+from random import randint
 
 class Pokemon(models.Model):
     pokemonId = models.IntegerField(default=0)
@@ -92,3 +92,9 @@ class Combat(models.Model):
     pokemonIAHp5 = models.IntegerField(default=0)
     pokemonIAHp6 = models.IntegerField(default=0)
 
+    pokemonIAId1 = models.IntegerField(default=randint(1, 151))
+    pokemonIAId2 = models.IntegerField(default=randint(1, 151))
+    pokemonIAId3 = models.IntegerField(default=randint(1, 151))
+    pokemonIAId4 = models.IntegerField(default=randint(1, 151))
+    pokemonIAId5 = models.IntegerField(default=randint(1, 151))
+    pokemonIAId6 = models.IntegerField(default=randint(1, 151))

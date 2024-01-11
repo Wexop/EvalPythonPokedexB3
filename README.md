@@ -26,17 +26,17 @@ Le choix du "Dark mode" pour l'application est un choix des developpeurs.
 
 Lors de la première utilisation, il faut attendre le chargement des pokemons, ensuite en cliquant sur le bouton "Pokedex", on accède à une page affichant une liste de pokemon (de 1 à 151)
 
-![Homepage](AssetsDocs/Pasted image 20231220161655.png)
+![Homepage](AssetsDocs/Pasted image 20231220161655.png?raw=true)
 *Page d'accueil*
 
 Le boutons "Update" sert à actualiser les Pokémon dans la base de donnée.
 
-![PokemonList](AssetsDocs/Pasted image 20231220161617.png)
+![PokemonList](AssetsDocs/Pasted image 20231220161617.png?raw=true)
 *Liste des Pokémons*
 
 Pour avoir plus d'informations il suffit de cliquer sur le bouton "En Savoir plus" affichant ainsi plus d'informations sur le Pokémon :
 
-![Pikaaaaa](AssetsDocs/Pasted image 20231220161918.png)
+![Pikaaaaa](AssetsDocs/Pasted image 20231220161918.png?raw=true)
 *Page de Pikachu*
 # Partie Combat
 
@@ -47,14 +47,14 @@ La gestion des équipes se fait via la page "Combat" accessible depuis la page d
 ![GestionEquipe2](AssetsDocs/Pasted image 20240111085827.png?raw=true)
 *Page de Gestions des Equipes*
 
-![GestionEquipe2](AssetsDocs/Pasted image 20240111084616.png)
+![GestionEquipe2](AssetsDocs/Pasted image 20240111084616.png?raw=true)
 *Page de Gestions des Equipes*
 
 Une équipe peux sois être "Choisie" pour combattre, "Modifiée" ou "Supprimée".
 
 ### Création d'une équipe
 
-![CréaEquipe](AssetsDocs/Pasted image 20240111084842.png)
+![CréaEquipe](AssetsDocs/Pasted image 20240111084842.png?raw=true)
 *Page de création d'une équipe*
 
 Pour modifier le Pokémon cliqué dessus et sélectionner le Pokémon par lequel vous souhaités le remplacer.

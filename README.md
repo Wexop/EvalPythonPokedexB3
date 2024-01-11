@@ -26,7 +26,7 @@ Le choix du "Dark mode" pour l'application est un choix des developpeurs.
 
 Lors de la première utilisation, il faut attendre le chargement des pokemons, ensuite en cliquant sur le bouton "Pokedex", on accède à une page affichant une liste de pokemon (de 1 à 151)
 
-![Homepage](AssetsDocs/Pasted image 20231220161655.png?raw=true)
+![Homepage](AssetsDocs/Pasted image 20231220161655.png?raw=true "Title")
 *Page d'accueil*
 
 Le boutons "Update" sert à actualiser les Pokémon dans la base de donnée.

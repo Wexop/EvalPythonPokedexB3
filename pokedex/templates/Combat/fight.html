@@ -13,34 +13,36 @@
 </head>
 <body style="background-color:#363832">
 <main style="text-align: center; margin: 1em 0; color: wheat">
+    <a href="/" type="button" class="btn"
+       style="margin: 1rem; background-color: wheat; color:#363832; border-color: wheat">Retour à l'Accueil</a>
 
-        <h1>Fight avec l'équipe {{ id_team }}</h1>
-<div class="container">
-    <div class="row">
-        <div class="col-2">
-            {% for pokemon in listpokemons.values %}
-                <img src="{{ pokemon.pokemon.sprite }}" alt="{{ pokemon.pokemon.name }}" width=60px height=auto>
-                <p>{{ pokemon.pokemon.name | capfirst }}</p>
-                <p>{{ pokemon.hp }}</p>
-            {% endfor %}
-        </div>
-        <div class="col-6">
-            <img src="{{ selectedIA.pokemon.sprite }}" width=120px height=auto>
-            <p>{{ selectedIA.pokemon.name }}</p>
-            <img src="{{ selected.pokemon.sprite }}" width=120px height=auto></img>
-            <p>{{ selected.pokemon.name }}</p>
-            <a href="/fight/updateHPAttack?id={{ id }}&id_team={{ id_team }}&pokemon={{ selected.selection }}&pokemonIa={{ selectedIA.selection }}">Attaque</a>
-            <a href="/fight/updateHPAttackSpe?id={{ id }}&id_team={{ id_team }}">Attaque spéciale</a>
-        </div>
-        <div class="col-2">
-            {% for pokemonIA in listpokemonsIA.values %}
-                <img src="{{ pokemonIA.pokemon.sprite }}" alt="{{ pokemonIA.pokemon.name }}" width=60px height=auto>
-                <p>{{ pokemonIA.pokemon.name | capfirst }}</p>
-                <p>{{ pokemonIA.hp }}</p>
-            {% endfor %}
+    <h1>Fight avec l'équipe {{ id_team }}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                {% for pokemon in listpokemons.values %}
+                    <img src="{{ pokemon.pokemon.sprite }}" alt="{{ pokemon.pokemon.name }}" width=60px height=auto>
+                    <p>{{ pokemon.pokemon.name | capfirst }}</p>
+                    <p>{{ pokemon.hp }}</p>
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                <img src="{{ selectedIA.pokemon.sprite }}" width=120px height=auto>
+                <p>{{ selectedIA.pokemon.name }}</p>
+                <img src="{{ selected.pokemon.sprite }}" width=120px height=auto></img>
+                <p>{{ selected.pokemon.name }}</p>
+                <a href="/fight/updateHPAttack?id={{ id }}&id_team={{ id_team }}&pokemon={{ selected.selection }}&pokemonIa={{ selectedIA.selection }}">Attaque</a>
+                <a href="/fight/updateHPAttackSpe?id={{ id }}&id_team={{ id_team }}">Attaque spéciale</a>
+            </div>
+            <div class="col-2">
+                {% for pokemonIA in listpokemonsIA.values %}
+                    <img src="{{ pokemonIA.pokemon.sprite }}" alt="{{ pokemonIA.pokemon.name }}" width=60px height=auto>
+                    <p>{{ pokemonIA.pokemon.name | capfirst }}</p>
+                    <p>{{ pokemonIA.hp }}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
 </main>
 </body>
 </html>

@@ -268,6 +268,57 @@ def updateHPAttack(request):
 def updateHPAttackSpe(request):
     id = request.GET.get("id")
     id_team = request.GET.get("id_team")
+    pokemonId = request.GET.get("pokemon")
+    pokemonIAId = request.GET.get("pokemonIa")
+
+    pokemon = Pokemon.objects.get(pokemonId=pokemonId)
+    attackspe = pokemon.special_attack
+    defensespe = pokemon.special_defense
+    speed = pokemon.speed
+    pokemonIA = Pokemon.objects.get(pokemonId=pokemonIAId)
+    attackspeIA = pokemonIA.special_attack
+    defensespeIA = pokemonIA.special_defense
+    speedIA = pokemonIA.speed
+
+    combat = Combat.objects.get(id=id)
+
+    while True:
+        if speed > speedIA:
+            if defensespeIA < attackspe:
+                combat.pokemonIAHp1 -= (attackspe - defensespeIA)
+            else:
+                combat.pokemonIAHp1 -= 1
+            if combat.pokemonIAHp1 <= 0:
+                combat.pokemonIAHp1 = 0
+                break
+
+            if defensespe < attackspeIA:
+                combat.pokemonHp1 -= (attackspeIA - defensespe)
+            else:
+                combat.pokemonHp1 -= 1
+            if combat.pokemonHp1 <= 0:
+                combat.pokemonHp1 = 0
+
+        else:
+            if defensespe < attackspeIA:
+                combat.pokemonHp1 -= (attackspeIA - defensespe)
+            else:
+                combat.pokemonHp1 -= 1
+            if combat.pokemonHp1 <= 0:
+                combat.pokemonHp1 = 0
+                break
+
+            if defensespeIA < attackspe:
+                combat.pokemonIAHp1 -= (attackspe - defensespeIA)
+            else:
+                combat.pokemonIAHp1 -= 1
+            if combat.pokemonIAHp1 <= 0:
+                combat.pokemonIAHp1 = 0
+
+        break
+
+    combat.save()
+
     return redirect(f"/fight/?id={id}&id_team={id_team}")
 
 

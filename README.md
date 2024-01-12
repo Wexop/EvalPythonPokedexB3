@@ -72,11 +72,11 @@ De base l'équipe sélectionnée sera la première équipe enregistré mais il e
 
 L'équipe sélectionnée est celle qui est entouré d'un liseré bleu.
 
-![ImpossibleSansEquipe](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/zero_team.png?raw=true)
-
-**On ne peut lancer un combat seulement si une équipe a déjà été créée auparavant.**
-
 Pour lancer le combat il suffira de cliquer sur le bouton rouge "COMBATTRE" après avoir sélectionné son équipe.
+
+**ATTENTION : On ne peut lancer un combat seulement si une équipe a déjà été créée auparavant.**
+
+![ImpossibleSansEquipe](https://github.com/Wexop/EvalPythonPokedexB3/blob/master/AssetsDocs/zero_team.png?raw=true)
 
 #### Le combat
 
